@@ -20,6 +20,7 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
     database: environment.NAME_DB,
     password: environment.PASSWORD_DB,
     port: Number(environment.PORT_DB),
+    ssl: true
   }
   const db = new Client(connectionData);
   await db.connect();
