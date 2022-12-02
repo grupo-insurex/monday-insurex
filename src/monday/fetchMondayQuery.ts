@@ -4,8 +4,6 @@ import { environment } from '../environment/environment';
 export async function fetchMondayQuery<T>(key: string, query: string): Promise<T> {
   const data = JSON.stringify({query: query});
 
-  console.log(data);
-
   const body = await postMondayRequest(key, data);
 
   return parseMondayResponse(body);
