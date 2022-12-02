@@ -20,7 +20,12 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
     database: environment.NAME_DB,
     password: environment.PASSWORD_DB,
     port: Number(environment.PORT_DB),
-    ssl: true
+    dialectOptions: {
+      ssl: {
+        require: true, // This will help you. But you will see nwe error
+        rejectUnauthorized: false // This line will fix new error
+      }
+    },
   }
   const db = new Client(connectionData);
   await db.connect();
