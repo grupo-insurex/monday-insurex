@@ -25,8 +25,7 @@ export async function getTokenParameters(db: DatabaseConnection, token: string):
 
 export async function getParametersFromQuery(db: DatabaseConnection, req: Request): Promise<TokenParameters> {
   const { token, key, board } = req.query;
-  console.log("cambio");
-  
+  console.log("swqsqs");
   if (token) {
     const parameters = await getTokenParameters(db, token.toString()).catch(() => undefined);
 
