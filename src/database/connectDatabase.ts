@@ -22,7 +22,7 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
     password: environment.PASSWORD_DB,
     port: Number(environment.PORT_DB),
     dialect: "postgres",
-    ssl: { rejectUnauthorized: false }
+    ssl: true,
   }
   const db = new Client(connectionData);
   await db.connect();
