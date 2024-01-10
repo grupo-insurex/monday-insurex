@@ -12,6 +12,7 @@ async function setupDatabase(db: DatabaseConnection) {
       CONSTRAINT monday_tokens_pkey PRIMARY KEY (token)
     )`);
 }
+console.log(process.env.DATABASE_URL ? { rejectUnauthorized: false } : false);
 
 export async function connectDatabase(): Promise<DatabaseConnection> {
   const connectionData = {
@@ -21,7 +22,7 @@ export async function connectDatabase(): Promise<DatabaseConnection> {
     password: environment.PASSWORD_DB,
     port: Number(environment.PORT_DB),
     dialect: "postgres",
-    ssl: { rejectUnauthorized: false }
+    ssl: process.env.SSL_DB ? { rejectUnauthorized: false } : false
   }
   const db = new Client(connectionData);
   await db.connect();
