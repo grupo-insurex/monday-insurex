@@ -12,11 +12,11 @@ export async function getTokenParameters(db: DatabaseConnection, token: string):
     [token],
   );
 
+
   if (res.rows.length === 0)
     return undefined;
 
   const row = res.rows[0];
-
   return {
     key: row['monday_key'],
     board: row['monday_board']
@@ -25,7 +25,6 @@ export async function getTokenParameters(db: DatabaseConnection, token: string):
 
 export async function getParametersFromQuery(db: DatabaseConnection, req: Request): Promise<TokenParameters> {
   const { token, key, board } = req.query;
-  console.log("swqsqs");
   if (token) {
     const parameters = await getTokenParameters(db, token.toString()).catch(() => undefined);
 

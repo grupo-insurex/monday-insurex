@@ -2,7 +2,7 @@ import https from 'https';
 import { environment } from '../environment/environment';
 
 export async function fetchMondayQuery<T>(key: string, query: string): Promise<T> {
-  const data = JSON.stringify({query: query});
+  const data = JSON.stringify({ query: query });
 
   const body = await postMondayRequest(key, data);
 
@@ -17,6 +17,7 @@ function postMondayRequest(key: string, data: string): Promise<string> {
         'Content-Type': 'application/json',
         'Content-Length': data.length,
         'Authorization': 'Bearer ' + key,
+        'API-Version': '2024-01',
       }
     }, (res) => {
       let body = '';

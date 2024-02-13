@@ -15,7 +15,7 @@ export async function initialize() {
 
   app.post('/token', generateTokenEndpoint.bind(null, db));
   app.get('/1/items', getItemsV1Endpoint.bind(null, db));
-  
+
   app.listen(environment.PORT);
   console.log("app conectada en el puerto", environment.PORT);
 }
